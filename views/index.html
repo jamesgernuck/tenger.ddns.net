@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/rain.css">
+    <link rel="stylesheet" href="/css/audio.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DotGothic16">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link href='http://fonts.googleapis.com/css?family=Alike' rel='stylesheet' type='text/css'>
+    <link rel="icon" type="image/x-icon" href="/assets/cursors/cursor.png">
+    <title>Fekete Tenger</title>
+</head>
+
+<body>
+    <div><img class="scan-lines" src="/assets/bars.gif"></div>
+    <i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i><i class="rain"></i>
+    <div class="flex-container-row">
+        <div class="header">
+            <h1>Exciting Manager</h1>
+            <p>Add items to the list. Automatically saves list data.</p>
+        </div>
+        <div class="game">
+            <iframe id="game_player" class="game_player" type="text/html" src="game.html" width="834" height="80"></iframe>
+        </div>
+    </div>
+    <div class="flex-container-row">
+        <div class="flex-container-column">
+            <div class="div6">
+                <div class="div2" id="prompt">
+                    <h1>New Item:</h1>
+                    <p>Create a new list item.</p>
+                    <input autocomplete="off" type="text" id="prompt-input" onkeydown="enter(event)">
+                    <button class="close-button" id="prompt-submit" onclick="add_to_list()">Add</button><br><br>
+                </div>
+                <div class="div1" id="list">
+                    <h1>List:</h1>
+                    <p>Items will appear here.</p>
+                </div>
+            </div>
+        </div>
+        <div class="flex-container-column">
+            <div class="div2">
+                <h1>Tone Generator:</h1>
+                <p>Frequency (0-20100 Hz): </p>
+                <input type="text" name="frequency" id="frequency" value="1000"/><button class="close-button" id="button" title="Play">Play</button>
+                <br><br>
+            </div>
+            <div class="div2">
+                <h1>Tuner:</h1>
+                <br><br><br><br>
+                <div class="div3" style="text-align:center;">
+                    <script src="/js/main.js"></script>
+                    <button class="button" onclick="this.innerText = togglePlayback(); toggleLiveInput(); this.style.display = 'none'">Start</button>
+
+                    <div id="detector" class="vague">
+                        <div class="pitch"><span id="pitch">--</span>Hz</div>
+                        <div class="note"><span id="note">--</span></div>
+                        <canvas id="output" width="250" height="250"></canvas>
+                        <div id="detune" style="position: absolute; margin: auto; top: 200px;">
+                            <span id="detune_amt">--</span><span id="flat"> cents &#9837;</span><span id="sharp"> cents &#9839;</span>
+                        </div>
+                    </div>
+                </div>
+                <br><br><br><br>
+            </div>
+        </div>
+        <div class="flex-container-column">
+            <div class="div2">
+                <h1>Settings:</h1>
+
+                <p>Border Color: <label id="test_wrapper"><input onchange="update_settings()" id="inp" type="color" value="#35e6ba"></label></p>
+                <p>Accent Color: <label id="test_wrapper2"><input onchange="update_settings()" id="range4" type="color" value="#c8c8c8"></label></p>
+                <p>Game Hue:     <input class="slider" onchange="update_settings()" type="range" min="0" max="360" step="3" value="0" id="range1"></p>
+                <p>Rain:         <input class="slider" onchange="update_settings()" type="range" min="0" max="1" step="1" value="1" id="range2"></p>
+                <p>Glow:  <input class="slider" onchange="update_settings()" type="range" min="0" max="100" step="1" value="10" id="range3"></p>
+                <p>Txt Glow:    <input class="slider" onchange="update_settings()" type="range" min="0" max="100" step="1" value="0" id="range5"></p>
+                <p>Radius: <input class="slider" onchange="update_settings()" type="range" min="0" max="50" step="1" value="10" id="range6"></p>
+
+            </div>
+            <div class="div2">
+                    <h1>Manage:</h1>
+                    <p>Manage website data.</p>
+                    <button class="close-button" id="prompt-submit" onclick="clear_list_cookies()">ClearData</button><br><br>
+                    <button class="close-button" id="prompt-submit" onclick="clear_settings_cookies()">LoadDefaults</button><br><br>
+            </div>
+        </div>
+        <div class="flex-container-column">
+            <div class="div5">
+                <br><br><br>
+                <div id="guy_container">
+                    <div id="guy"></div>
+                    <div id="guy_glow"></div>
+                </div>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            </div>
+            <div class="div5">
+                <h1>Links:</h1>
+                <a href="https://bodiancsinfisher.codehs.me/fun.html">FunTab</a><br>
+                <a href="https://lukemath.w3spaces.com/">LukeMath-TriangleSolver</a><br>
+                <a href="https://punnetsquares.w3spaces.com/">LukeMath-DihybridCrosses</a><br>
+                <a href="https://sandbox-program-6307241.codehs.me/index.html/">JacobGame-Game</a><br>
+                <a href="https://edgedetection.w3spaces.com/">Sobel-Filter</a><br>
+                <a href="https://fene.w3spaces.com/">PixelSort-Filter</a><br>
+                <a href="https://liftulator.w3spaces.com/">Liftulator</a><br>
+                <a href="https://testsite124.w3spaces.com/audio.html">Tenkey-AudioVisualizer</a><br><br>
+            </div>
+        </div>
+    </div>
+    <!--<audio>!-->
+        <!--<source src="horse.ogg" type="audio/ogg">!-->
+    <!--</audio>!-->
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+</html>
